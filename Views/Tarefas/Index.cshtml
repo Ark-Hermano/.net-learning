@@ -1,0 +1,36 @@
+@model IEnumerable<Tarefa>
+
+<h1>Tarefas</h1>
+
+<p>
+    <a asp-action="Criar">Criar nova tarefa</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Data de Criação</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarefa in Model)
+        {
+            <tr>
+                <td>@tarefa.Id</td>
+                <td>@tarefa.Nome</td>
+                <td>@tarefa.Descricao</td>
+                <td>@tarefa.DataCriacao.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@tarefa.Id">Editar</a> |
+                    <form asp-action="Excluir" asp-route-id="@tarefa.Id" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
+                        <button type="submit" class="btn btn-link">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

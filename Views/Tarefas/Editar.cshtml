@@ -1,0 +1,25 @@
+@model Tarefa
+
+<h1>Editar tarefa</h1>
+
+<form asp-action="Editar" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label asp-for="Nome" class="control-label"></label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descricao" class="control-label"></label>
+        <textarea asp-for="Descricao" class="form-control"></textarea>
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DataCriacao" class="control-label"></label>
+        <input asp-for="DataCriacao" class="form-control" />
+        <span asp-validation-for="DataCriacao" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
