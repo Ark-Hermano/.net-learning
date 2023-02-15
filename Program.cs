@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace learning
 {
@@ -17,4 +19,4 @@ namespace learning
                     webBuilder.UseStartup<Startup>();
                 });
     }
-}      
+}       

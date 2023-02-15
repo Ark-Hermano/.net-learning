@@ -5,9 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using learning.Data;
+using System.Data.SqlClient;
 
 namespace learning
-{AddDbContext
+{
     public class Startup
     {
         public IConfiguration Configuration { get; }
