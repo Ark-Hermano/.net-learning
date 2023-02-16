@@ -4,9 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]
 public class ProdutosController : ControllerBase
 {
-    [HttpGet("{id}")]
-    public ActionResult<string> Get(int id)
-    {
-        return $"Produto {id}";
-    }
+
+  private IProdutoRepository _produtoRepository;
+  public ProdutosController(IProdutoRepository produtoRepository)
+  {
+    _produtoRepository = produtoRepository;
+
+  }
+
+  [HttpGet]
+  public IEnumerable<Produto> GetAll()
+  {
+    return _produtoRepository.GetAll();
+  }
 }

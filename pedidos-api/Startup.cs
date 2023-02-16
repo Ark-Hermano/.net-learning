@@ -23,6 +23,16 @@ namespace PedidosApi
     public IConfiguration Configuration { get; }
     public void ConfigureServices(IServiceCollection services)
     {
+
+      services.AddCors(options =>
+      {
+        options.AddDefaultPolicy(builder =>
+        {
+          builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+      });
       var connectionString = Configuration.GetConnectionString("DefaultConnection");
       services.AddTransient<IDbConnection>((sp) => new SqlConnection(connectionString));
       services.AddTransient<IPedidoRepository, PedidoRepository>();
@@ -34,6 +44,7 @@ namespace PedidosApi
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+      app.UseCors();
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();

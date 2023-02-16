@@ -16,7 +16,7 @@ namespace pedidos_api.Models
 
     public void Add(Pedido item)
     {
-      var sql = "INSERT INTO Pedidos (NomeCliente, DataPedido) VALUES (@NomeCliente, @DataPedido)";
+      var sql = "INSERT INTO Pedidos (ProdutoId, UserId) VALUES (@ProdutoId, @UserId)";
       _db.Execute(sql, item);
     }
 
@@ -40,7 +40,7 @@ namespace pedidos_api.Models
 
     public void Update(Pedido item)
     {
-      var sql = "UPDATE Pedidos SET NomeCliente = @NomeCliente, DataPedido = @DataPedido WHERE Id = @Id";
+      var sql = "UPDATE Pedidos SET ProdutoId = @ProdutoId, UserId = @UserId WHERE Id = @Id";
       _db.Execute(sql, item);
     }
   }
